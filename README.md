@@ -1,16 +1,15 @@
-# jogo_fodase
+# Jogo Dane-se
 
-A new Flutter project.
 
-## Getting Started
+## Tarefas realizadas
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Criadas tela principal e tela de jogo.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Adicionados botões na tela principal para adicionar os jogadores e começar o jogo.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Adicionado botão na tela de jogo para uma nova rodada.
+
+### Tarefas por realizar
+
+Lógica para somar a pontuação.
