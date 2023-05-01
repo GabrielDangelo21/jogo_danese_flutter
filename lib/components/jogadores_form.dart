@@ -27,6 +27,7 @@ class _JogadoresFormState extends State<JogadoresForm> {
       children: [
         Card(
           child: TextField(
+            autofocus: true,
             controller: nomeController,
             //para o usuario nao ter que clicar no adicionar jogador e sim no ok do teclado
             onSubmitted: (_) => _submitForm(),

@@ -48,22 +48,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Jogador> _jogadores = [
-    Jogador(
-      nome: 'Gabriel',
-    ),
-    Jogador(
-      nome: 'Kleyte',
-    ),
-    Jogador(
-      nome: 'Belinha',
-    ),
-    Jogador(
-      nome: 'Val',
-    ),
-    Jogador(
-      nome: 'Pedro',
-    ),
+  final List<Jogador> jogadores = [
+    Jogador(nome: 'Gabriel'),
+    Jogador(nome: 'Kleyte'),
+    Jogador(nome: 'Belinha'),
+    Jogador(nome: 'Val'),
+    Jogador(nome: 'Pedro'),
   ];
 
   _addJogador(String nome) {
@@ -71,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
     // adcionando o novo jogador pelo componente statefull
     setState(() {
-      _jogadores.add(newJogador);
+      jogadores.add(newJogador);
     });
     // fechar o model do formulario após incluir novo jogador
     Navigator.of(context).pop();
@@ -95,11 +85,44 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            JogadoresList(_jogadores),
-            Row(
+      body: Column(
+        children: [
+          Container(
+            height: 600,
+            child: ListView.builder(
+                itemCount: jogadores.length,
+                itemBuilder: (ctx, index) {
+                  final jd = jogadores[index];
+                  return Column(
+                    children: [
+                      Card(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: 100,
+                              margin: EdgeInsets.symmetric(
+                                horizontal: 15,
+                                vertical: 10,
+                              ),
+                              child: Text(
+                                jd.nome,
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).primaryColor,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  );
+                }),
+          ),
+          Container(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 OutlinedButton(
@@ -120,7 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   onPressed: () => Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
-                      builder: (context) => GamePage(jogadores: _jogadores),
+                      builder: (context) => GamePage(jogadores: jogadores),
                     ),
                   ),
                   child: Text(
@@ -129,15 +152,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ],
-            )
-          ],
-        ),
+            ),
+          ),
+        ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () => _openJogadorFormModal(context),
-      //   child: Icon(Icons.add),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

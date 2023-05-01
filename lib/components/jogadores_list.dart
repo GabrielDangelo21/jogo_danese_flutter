@@ -3,6 +3,7 @@ import 'package:jogo_fodase/models/jogadores.dart';
 
 class JogadoresList extends StatelessWidget {
   final List<Jogador> jogadores;
+  int pedidas = 0;
 
   JogadoresList(this.jogadores);
 
@@ -19,6 +20,7 @@ class JogadoresList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
+                  width: 100,
                   margin: EdgeInsets.symmetric(
                     horizontal: 15,
                     vertical: 10,
@@ -30,6 +32,30 @@ class JogadoresList extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).primaryColor,
                     ),
+                  ),
+                ),
+                Container(
+                  child: Text(
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Theme.of(context).primaryColor,
+                      ),
+                      pedidas.toString()),
+                ),
+                Container(
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () => {},
+                        icon: Icon(Icons.check_circle),
+                        color: Colors.green,
+                      ),
+                      IconButton(
+                        onPressed: () => {},
+                        icon: Icon(Icons.close_rounded),
+                        color: Colors.red,
+                      ),
+                    ],
                   ),
                 ),
                 Container(
@@ -45,7 +71,7 @@ class JogadoresList extends StatelessWidget {
                       color: Theme.of(context).primaryColor,
                     ),
                   ),
-                )
+                ),
               ],
             ),
           );

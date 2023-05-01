@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class RoundForm extends StatefulWidget {
-  final void Function(String) onSubmit;
+  final void Function(int) onSubmit;
 
   RoundForm(this.onSubmit);
 
@@ -10,15 +10,16 @@ class RoundForm extends StatefulWidget {
 }
 
 class _RoundFormState extends State<RoundForm> {
-  final acertosController = TextEditingController();
+  final pedidasController = TextEditingController();
 
   _submitForm() {
-    final acertos = acertosController.text;
+    final pedidas = pedidasController.text;
+    final pedidaFormatada = int.parse(pedidas);
 
-    if (acertos.isEmpty) {
+    if (pedidas.isEmpty) {
       return;
     }
-    widget.onSubmit(acertos);
+    widget.onSubmit(pedidaFormatada);
   }
 
   @override
@@ -27,7 +28,8 @@ class _RoundFormState extends State<RoundForm> {
       children: [
         Card(
           child: TextField(
-            controller: acertosController,
+            autofocus: true,
+            controller: pedidasController,
             //para o usuario nao ter que clicar no adicionar jogador e sim no ok do teclado
             onSubmitted: (_) => _submitForm(),
             decoration: InputDecoration(

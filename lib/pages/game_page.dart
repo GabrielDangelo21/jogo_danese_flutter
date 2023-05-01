@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:jogo_fodase/components/round_form.dart';
-import 'package:jogo_fodase/models/acertos.dart';
 
 import '../components/jogadores_list.dart';
 import '../models/jogadores.dart';
@@ -15,6 +14,23 @@ class GamePage extends StatefulWidget {
 }
 
 class _GamePageState extends State<GamePage> {
+  int pedidaJogador = 0;
+
+  addPedidas(int pedidas) {
+    setState(() {
+      pedidaJogador += pedidas;
+    });
+    Navigator.of(context).pop();
+  }
+
+  _openRoundFormModal(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (_) {
+          return RoundForm(addPedidas);
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,40 +39,32 @@ class _GamePageState extends State<GamePage> {
           child: Text('Jogo Dane-se'),
         ),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            JogadoresList(widget.jogadores),
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                shape: StadiumBorder(),
-                side: BorderSide(width: 2, color: Colors.amber),
-              ),
-              onPressed: () => _openJogadorFormModal(context),
-              child: Text(
-                'Nova rodada',
-                style: TextStyle(color: Colors.amber),
-              ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 600,
+            child: ListView.builder(
+              itemCount: widget.jogadores.length,
+              itemBuilder: (ctx, index) {
+                // final jd = widget.jogadores[index];
+                return JogadoresList(widget.jogadores);
+              },
             ),
-          ],
-        ),
+          ),
+          Text(pedidaJogador.toString()),
+          OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              shape: StadiumBorder(),
+              side: BorderSide(width: 2, color: Colors.amber),
+            ),
+            onPressed: () => _openRoundFormModal(context),
+            child: Text(
+              'Nova rodada',
+              style: TextStyle(color: Colors.amber),
+            ),
+          ),
+        ],
       ),
     );
-  }
-
-  _newRound(String acertos) {
-    final acertei = Acertos(
-      acertos: acertos,
-    );
-    for (int i = 0; i < widget.jogadores.length; i++) {}
-    setState(() {});
-  }
-
-  _openJogadorFormModal(BuildContext context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (_) {
-          return RoundForm(_newRound);
-        });
   }
 }
