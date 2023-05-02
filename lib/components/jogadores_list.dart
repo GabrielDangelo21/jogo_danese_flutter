@@ -1,20 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:jogo_fodase/components/round_form.dart';
 import 'package:jogo_fodase/models/jogadores.dart';
 
-class JogadoresList extends StatelessWidget {
+class JogadoresList extends StatefulWidget {
   final List<Jogador> jogadores;
-  int pedidas = 0;
 
   JogadoresList(this.jogadores);
+
+  @override
+  State<JogadoresList> createState() => _JogadoresListState();
+}
+
+class _JogadoresListState extends State<JogadoresList> {
+  int pedidaJogador = 0;
+
+  addPedidas(int pedidas) {
+    setState(() {
+      pedidaJogador += pedidas;
+    });
+    Navigator.of(context).pop();
+  }
+
+  openRoundFormModal(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (_) {
+          return RoundForm(addPedidas);
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 600,
       child: ListView.builder(
-        itemCount: jogadores.length,
+        itemCount: widget.jogadores.length,
         itemBuilder: (ctx, index) {
-          final jd = jogadores[index];
+          final jd = widget.jogadores[index];
           return Card(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,12 +57,19 @@ class JogadoresList extends StatelessWidget {
                   ),
                 ),
                 Container(
+                  child: IconButton(
+                    icon: Icon(Icons.add_box_rounded),
+                    color: Colors.amber,
+                    onPressed: () => openRoundFormModal(context),
+                  ),
+                ),
+                Container(
                   child: Text(
                       style: TextStyle(
                         fontSize: 16,
                         color: Theme.of(context).primaryColor,
                       ),
-                      pedidas.toString()),
+                      pedidaJogador.toString()),
                 ),
                 Container(
                   child: Row(

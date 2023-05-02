@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:jogo_fodase/components/jogadores_form.dart';
 import 'package:jogo_fodase/pages/game_page.dart';
-import 'components/jogadores_list.dart';
 import 'models/jogadores.dart';
 
-main() => runApp(const DaneseApp());
+main() => runApp(
+      const DaneseApp(),
+    );
 
 class DaneseApp extends StatelessWidget {
   const DaneseApp({super.key});
