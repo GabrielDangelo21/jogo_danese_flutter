@@ -22,6 +22,8 @@ Funcionalidade de adicionar e remover pedidas dos jogadores.
 
 Ajustar tamanhos dos containers com overflow.
 
+Criar a página com a pontuação final.
+
 ________________________________________________________________________________________________________________________________________________________
 
 
@@ -43,3 +45,5 @@ Logic for adding up the score.
 ### Tasks to do
 
 Adjust container sizes with overflow.
+
+Create the page with the final score.
