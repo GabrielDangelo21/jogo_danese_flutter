@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jogo_fodase/components/round_form.dart';
 import 'package:jogo_fodase/models/jogadores.dart';
 
 class JogadoresList extends StatefulWidget {
@@ -12,23 +11,6 @@ class JogadoresList extends StatefulWidget {
 }
 
 class _JogadoresListState extends State<JogadoresList> {
-  int pedidaJogador = 0;
-
-  addPedidas(int pedidas) {
-    setState(() {
-      pedidaJogador += pedidas;
-    });
-    Navigator.of(context).pop();
-  }
-
-  openRoundFormModal(BuildContext context) {
-    showModalBottomSheet(
-        context: context,
-        builder: (_) {
-          return RoundForm(addPedidas);
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -57,10 +39,31 @@ class _JogadoresListState extends State<JogadoresList> {
                   ),
                 ),
                 Container(
-                  child: IconButton(
-                    icon: Icon(Icons.add_box_rounded),
-                    color: Colors.amber,
-                    onPressed: () => openRoundFormModal(context),
+                  width: 100,
+                  child: Row(
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.add_box_rounded),
+                        color: Colors.amber,
+                        onPressed: () {
+                          setState(() {
+                            jd.pedidas++;
+                          });
+                        },
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.remove_circle),
+                        color: Colors.amber,
+                        onPressed: () {
+                          setState(() {
+                            if (jd.pedidas <= 0) {
+                              return;
+                            }
+                            jd.pedidas--;
+                          });
+                        },
+                      ),
+                    ],
                   ),
                 ),
                 Container(
@@ -69,18 +72,28 @@ class _JogadoresListState extends State<JogadoresList> {
                         fontSize: 16,
                         color: Theme.of(context).primaryColor,
                       ),
-                      pedidaJogador.toString()),
+                      jd.pedidas.toString()),
                 ),
                 Container(
                   child: Row(
                     children: [
                       IconButton(
-                        onPressed: () => {},
+                        onPressed: () {
+                          setState(() {
+                            jd.pontos += (5 + jd.pedidas);
+                            jd.pedidas = 0;
+                          });
+                        },
                         icon: Icon(Icons.check_circle),
                         color: Colors.green,
                       ),
                       IconButton(
-                        onPressed: () => {},
+                        onPressed: () {
+                          setState(() {
+                            jd.pontos = jd.pontos;
+                            jd.pedidas = 0;
+                          });
+                        },
                         icon: Icon(Icons.close_rounded),
                         color: Colors.red,
                       ),
@@ -95,7 +108,7 @@ class _JogadoresListState extends State<JogadoresList> {
                   child: Text(
                     jd.pontos.toString(),
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).primaryColor,
                     ),

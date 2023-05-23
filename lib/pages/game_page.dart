@@ -18,13 +18,13 @@ class _GamePageState extends State<GamePage> {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text('Jogo Dane-se'),
+          child: Text('Foda-se'),
         ),
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.8,
+          Container(
+            height: MediaQuery.of(context).size.height * 0.77,
             child: ListView.builder(
               itemCount: widget.jogadores.length,
               itemBuilder: (ctx, index) {
@@ -40,7 +40,7 @@ class _GamePageState extends State<GamePage> {
                 shape: StadiumBorder(),
                 side: BorderSide(width: 2, color: Colors.amber),
               ),
-              onPressed: () => {},
+              onPressed: () {},
               child: Text(
                 'Encerrar',
                 style: TextStyle(color: Colors.amber),

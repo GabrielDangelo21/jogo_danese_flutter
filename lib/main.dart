@@ -53,8 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
     Jogador(nome: 'Gabriel'),
     Jogador(nome: 'Kleyte'),
     Jogador(nome: 'Belinha'),
-    Jogador(nome: 'Val'),
     Jogador(nome: 'Pedro'),
+    Jogador(nome: 'Val'),
   ];
 
   _addJogador(String nome) {
@@ -82,7 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Center(
           child: const Text(
-            'Jogo Dane-se',
+            'Foda-se',
           ),
         ),
       ),
