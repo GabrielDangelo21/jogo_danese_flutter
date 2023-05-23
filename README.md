@@ -14,9 +14,13 @@ Adicionado botão de confirmar se acertou ou não a rodada atual.
 
 Adicionado número de pedidas atualizáveis.
 
+Lógica para somar a pontuação.
+
+Funcionalidade de adicionar e remover pedidas dos jogadores.
+
 ### Tarefas por realizar
 
-Lógica para somar a pontuação.
+Ajustar tamanhos dos containers com overflow.
 
 ________________________________________________________________________________________________________________________________________________________
 
@@ -34,6 +38,8 @@ Added button to confirm whether or not you hit the current round.
 
 Added number of updatable requests.
 
+Logic for adding up the score.
+
 ### Tasks to do
 
-Logic for adding up the score.
+Adjust container sizes with overflow.
