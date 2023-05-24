@@ -50,11 +50,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Jogador> jogadores = [
-    Jogador(nome: 'Gabriel'),
-    Jogador(nome: 'Kleyte'),
-    Jogador(nome: 'Belinha'),
-    Jogador(nome: 'Pedro'),
-    Jogador(nome: 'Val'),
   ];
 
   _addJogador(String nome) {
@@ -94,31 +89,27 @@ class _MyHomePageState extends State<MyHomePage> {
                 itemCount: jogadores.length,
                 itemBuilder: (ctx, index) {
                   final jd = jogadores[index];
-                  return Column(
-                    children: [
-                      Card(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              width: 100,
-                              margin: EdgeInsets.symmetric(
-                                horizontal: 15,
-                                vertical: 10,
-                              ),
-                              child: Text(
-                                jd.nome,
-                                style: TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                  color: Theme.of(context).primaryColor,
-                                ),
-                              ),
+                  return Card(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          width: 100,
+                          margin: EdgeInsets.symmetric(
+                            horizontal: 15,
+                            vertical: 10,
+                          ),
+                          child: Text(
+                            jd.nome,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Theme.of(context).primaryColor,
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   );
                 }),
           ),

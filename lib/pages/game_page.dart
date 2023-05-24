@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../components/jogadores_list.dart';
+import '../main.dart';
 import '../models/jogadores.dart';
+import '../pages/final_page.dart';
 
 class GamePage extends StatefulWidget {
   List<Jogador> jogadores;
@@ -40,7 +42,11 @@ class _GamePageState extends State<GamePage> {
                 shape: StadiumBorder(),
                 side: BorderSide(width: 2, color: Colors.amber),
               ),
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).pushReplacement(
+                MaterialPageRoute(
+                  builder: (context) => MyHomePage(),
+                ),
+              ),
               child: Text(
                 'Encerrar',
                 style: TextStyle(color: Colors.amber),

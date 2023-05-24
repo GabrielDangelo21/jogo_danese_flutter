@@ -11,11 +11,10 @@ class FinalPage extends StatefulWidget {
 }
 
 class _FinalPage extends State<FinalPage> {
-  List? get ordenado => null;
-
   List<Jogador> ordernarLista(List<Jogador> lista) {
     List<Jogador> ordernado = lista.toList();
     ordernado.sort((a, b) => a.pontos.compareTo(b.pontos));
+    print(ordernado);
     return ordernado;
   }
 
@@ -23,14 +22,8 @@ class _FinalPage extends State<FinalPage> {
   Widget build(BuildContext context) {
     return Container(
       height: 600,
-      child: ListView.builder(
-        itemCount: widget.jogadores.length,
-        itemBuilder: (ctx, index) {
-          // final jd = widget.jogadores[index];
-          return Card(
-            child: Text(ordenado as String),
-          );
-        },
+      child: Card(
+        child: Text(''),
       ),
     );
   }
