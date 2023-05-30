@@ -49,8 +49,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Jogador> jogadores = [
-  ];
+  final List<Jogador> jogadores = [];
 
   _addJogador(String nome) {
     final newJogador = Jogador(nome: nome);
@@ -133,14 +132,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     shape: StadiumBorder(),
                     side: BorderSide(width: 2, color: Colors.amber),
                   ),
+                  child: Text(
+                    'Jogar',
+                    style: TextStyle(color: Colors.amber),
+                  ),
                   onPressed: () => Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (context) => GamePage(jogadores: jogadores),
                     ),
-                  ),
-                  child: Text(
-                    'Jogar',
-                    style: TextStyle(color: Colors.amber),
                   ),
                 ),
               ],
