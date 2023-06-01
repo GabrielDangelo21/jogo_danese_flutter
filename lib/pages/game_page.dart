@@ -4,7 +4,6 @@ import 'package:jogo_fodase/components/jogadores_list_classificacao.dart';
 import '../components/jogadores_list.dart';
 import '../main.dart';
 import '../models/jogadores.dart';
-import '../pages/final_page.dart';
 
 class GamePage extends StatefulWidget {
   List<Jogador> jogadores;
@@ -52,7 +51,7 @@ class _GamePageState extends State<GamePage> {
               child: ListView.builder(
                 itemCount: widget.jogadores.length,
                 itemBuilder: (ctx, index) {
-                  final jd = widget.jogadores[index];
+                  // final jd = widget.jogadores[index];
                   return JogadoresList(widget.jogadores);
                 },
               ),
@@ -122,7 +121,7 @@ class _GamePageState extends State<GamePage> {
                                 shrinkWrap: true,
                                 itemCount: widget.jogadores.length,
                                 itemBuilder: (ctx, index) {
-                                  final jd = widget.jogadores[index];
+                                  // final jd = widget.jogadores[index];
                                   return JogadoresListClassificacao(
                                       widget.jogadores);
                                 },
